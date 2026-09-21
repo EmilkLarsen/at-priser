@@ -8,6 +8,34 @@ OUT = "data/latest/hagebau_at.jsonl"
 
 
 def fetch_url_list(limit=None):
+    """Category sitemaps -> category pages -> product URLs from HTML."""
+    idx = get(f"{BASE}/sitemap.xml")
+    cat_pages = re.findall(r"<loc>([^<]+sitemap/category/\?index=\d+)</loc>", idx)
+    urls = []
+    seen = set()
+    for cp in cat_pages[:8]:
+        try:
+            xml = get(cp)
+        except Exception:
+            continue
+        cats = re.findall(r"<loc>(https://www\.hagebau\.at/[^<]+)</loc>", xml)
+        for cat in cats[:5]:
+            try:
+                ch = get(cat)
+            except Exception:
+                continue
+            us = re.findall(r"(https://www\.hagebau\.at/[^\s"<]+/p/\d+)", ch)
+            for u in us:
+                if u not in seen:
+                    seen.add(u)
+                    urls.append(u)
+            if limit and len(urls) >= limit:
+                break
+        if limit and len(urls) >= limit:
+            break
+    return urls[:limit] if limit else urls
+
+def _old_fetch(limit=None):
     idx = get(f"{BASE}/sitemap.xml")
     cat_pages = re.findall(r"<loc>([^<]+sitemap/category/\?index=\d+)</loc>", idx)
     urls = []
