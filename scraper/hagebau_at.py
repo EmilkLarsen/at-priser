@@ -24,7 +24,8 @@ def fetch_url_list(limit=None):
                 ch = get(cat)
             except Exception:
                 continue
-            us = re.findall(r"(https://www\.hagebau\.at/[^\s"<]+/p/\d+)", ch)
+            us = re.findall(r'https://[^\s"<]+/p/\d+', ch)
+
             for u in us:
                 if u not in seen:
                     seen.add(u)
