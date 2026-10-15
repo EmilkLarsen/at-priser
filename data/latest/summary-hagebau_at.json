@@ -2,11 +2,11 @@
  "date": "2026-10-14",
  "chains": {
   "hagebau_at": {
-   "products": 39223,
+   "products": 78139,
    "price_changes": 0,
    "suspicious_changes": 0,
    "expired": 0,
-   "seconds": 18003.5
+   "seconds": 18004.8
   }
  }
 }
