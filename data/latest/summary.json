@@ -3,11 +3,11 @@
  "total_rows": 125468,
  "chains": {
   "hagebau_at": {
-   "products": 78626,
+   "products": 117876,
    "price_changes": 0,
    "suspicious_changes": 0,
    "expired": 0,
-   "seconds": 18003.9
+   "seconds": 18004.7
   }
  }
 }
