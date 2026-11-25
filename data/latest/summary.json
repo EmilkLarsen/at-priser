@@ -1,13 +1,13 @@
 {
  "date": "2026-11-25",
- "total_rows": 126534,
+ "total_rows": 126537,
  "chains": {
   "hagebau_at": {
-   "products": 78990,
+   "products": 118390,
    "price_changes": 0,
    "suspicious_changes": 0,
    "expired": 0,
-   "seconds": 18004.7
+   "seconds": 18005.2
   }
  }
 }
